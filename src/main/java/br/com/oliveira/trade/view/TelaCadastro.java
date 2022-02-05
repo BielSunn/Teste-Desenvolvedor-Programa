@@ -1,4 +1,5 @@
 package br.com.oliveira.trade.view;
+
 import java.awt.BorderLayout;
 import java.awt.EventQueue;
 
@@ -10,17 +11,22 @@ import javax.swing.JTextField;
 import javax.swing.JPasswordField;
 import javax.swing.JFormattedTextField;
 import javax.swing.border.TitledBorder;
+
+import br.com.oliveira.trade.model.Usuario;
+
 import javax.swing.border.EtchedBorder;
 import java.awt.Color;
 import javax.swing.JComboBox;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JButton;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class TelaCadastro extends JFrame {
 
 	private JPanel painelCadastro;
 	private JTextField txtNome;
-	private JTextField textFieldEmail;
+	private JTextField txtEmail;
 	private JPasswordField campoSenha;
 	private JTextField txtEndereco;
 	private JTextField txtCidade;
@@ -66,10 +72,10 @@ public class TelaCadastro extends JFrame {
 		lblEmail.setBounds(10, 25, 90, 20);
 		panel.add(lblEmail);
 
-		textFieldEmail = new JTextField();
-		textFieldEmail.setColumns(10);
-		textFieldEmail.setBounds(10, 56, 240, 26);
-		panel.add(textFieldEmail);
+		txtEmail = new JTextField();
+		txtEmail.setColumns(10);
+		txtEmail.setBounds(10, 56, 240, 26);
+		panel.add(txtEmail);
 
 		JLabel lblSenha = new JLabel("Senha");
 		lblSenha.setBounds(324, 25, 90, 20);
@@ -143,7 +149,7 @@ public class TelaCadastro extends JFrame {
 		lblCpf.setBounds(10, 79, 90, 20);
 		painelDadosPessoais.add(lblCpf);
 
-		JFormattedTextField campoCpf = new JFormattedTextField();
+		final JFormattedTextField campoCpf = new JFormattedTextField();
 		campoCpf.setBounds(10, 110, 180, 26);
 		painelDadosPessoais.add(campoCpf);
 
@@ -151,7 +157,7 @@ public class TelaCadastro extends JFrame {
 		lblDataDeNascimento.setBounds(345, 10, 169, 23);
 		painelDadosPessoais.add(lblDataDeNascimento);
 
-		JFormattedTextField formattedTxtDataNascimento = new JFormattedTextField();
+		final JFormattedTextField formattedTxtDataNascimento = new JFormattedTextField();
 		formattedTxtDataNascimento.setBounds(345, 42, 180, 26);
 		painelDadosPessoais.add(formattedTxtDataNascimento);
 
@@ -172,8 +178,21 @@ public class TelaCadastro extends JFrame {
 		txtBairro.setColumns(10);
 		txtBairro.setBounds(345, 249, 200, 26);
 		painelDadosPessoais.add(txtBairro);
-		
+
 		JButton btnCadastro = new JButton("Cadastrar");
+		btnCadastro.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				Usuario usuario = new Usuario(
+						txtNome.getText(), 
+						formattedTxtDataNascimento.getText(),
+						campoCpf.getText(), 
+						txtEmail.getText(), 
+						campoSenha.getText()
+						);
+				System.out.println(usuario.toString());
+
+			}
+		});
 		btnCadastro.setBounds(423, 370, 122, 34);
 		painelDadosPessoais.add(btnCadastro);
 	}
