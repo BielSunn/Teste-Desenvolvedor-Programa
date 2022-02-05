@@ -9,6 +9,8 @@ import java.awt.Color;
 import javax.swing.JTextField;
 import javax.swing.JPasswordField;
 import javax.swing.JButton;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class TelaLogin extends JFrame {
 
@@ -45,7 +47,7 @@ public class TelaLogin extends JFrame {
 		
 		JLabel lblNomeEmpresa = new JLabel("Oliveira Trade");
 		lblNomeEmpresa.setBackground(new Color(240, 240, 240));
-		lblNomeEmpresa.setBounds(167, 23, 98, 49);
+		lblNomeEmpresa.setBounds(167, 48, 98, 49);
 		painelLogin.add(lblNomeEmpresa);
 		
 		JLabel lblEmail = new JLabel("E-Mail");
@@ -70,6 +72,14 @@ public class TelaLogin extends JFrame {
 		painelLogin.add(btnEntrar);
 		
 		JButton btnCadastrar = new JButton("Cadastrar");
+		btnCadastrar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				new TelaCadastro();
+				//dispose(); // fecha a tela de login
+				setVisible(false);
+				
+			}
+		});
 		btnCadastrar.setBounds(322, 371, 104, 28);
 		painelLogin.add(btnCadastrar);
 		
