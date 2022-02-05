@@ -1,26 +1,25 @@
 package br.com.oliveira.trade.view;
 
-import java.awt.BorderLayout;
-import java.awt.EventQueue;
-
-import javax.swing.JFrame;
-import javax.swing.JPanel;
-import javax.swing.border.EmptyBorder;
-import javax.swing.JLabel;
-import javax.swing.JTextField;
-import javax.swing.JPasswordField;
-import javax.swing.JFormattedTextField;
-import javax.swing.border.TitledBorder;
-
-import br.com.oliveira.trade.model.Usuario;
-
-import javax.swing.border.EtchedBorder;
 import java.awt.Color;
-import javax.swing.JComboBox;
+import java.awt.EventQueue;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.text.ParseException;
+
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JButton;
-import java.awt.event.ActionListener;
-import java.awt.event.ActionEvent;
+import javax.swing.JComboBox;
+import javax.swing.JFormattedTextField;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JPasswordField;
+import javax.swing.JTextField;
+import javax.swing.border.EtchedBorder;
+import javax.swing.border.TitledBorder;
+import javax.swing.text.MaskFormatter;
+
+import br.com.oliveira.trade.model.Usuario;
 
 public class TelaCadastro extends JFrame {
 
@@ -60,31 +59,113 @@ public class TelaCadastro extends JFrame {
 		setContentPane(painelCadastro);
 		painelCadastro.setLayout(null);
 
-		JPanel panel = new JPanel();
-		panel.setBorder(new TitledBorder(
+		// Define as máscaras
+		MaskFormatter mascaraCep = null;
+		MaskFormatter mascaraTelefone = null;
+		MaskFormatter mascaraCpf = null;
+		MaskFormatter mascaraData = null;
+
+		try {
+			mascaraCep = new MaskFormatter("#####-###");
+			mascaraTelefone = new MaskFormatter("(##)####-####");
+			mascaraCpf = new MaskFormatter("#########-##");
+			mascaraData = new MaskFormatter("##/##/####");
+			mascaraCep.setPlaceholderCharacter('_');
+			mascaraTelefone.setPlaceholderCharacter('_');
+			mascaraCpf.setPlaceholderCharacter('_');
+			mascaraData.setPlaceholderCharacter('_');
+		} catch (ParseException excp) {
+			System.err.println("Erro na formatação: " + excp.getMessage());
+			// System.exit(-1);
+		}
+
+		JPanel painelDadosLogin = new JPanel();
+		painelDadosLogin.setBorder(new TitledBorder(
 				new EtchedBorder(EtchedBorder.LOWERED, new Color(255, 255, 255), new Color(160, 160, 160)),
 				"Dados de Login", TitledBorder.CENTER, TitledBorder.TOP, null, new Color(0, 0, 0)));
-		panel.setBounds(0, 0, 588, 142);
-		painelCadastro.add(panel);
-		panel.setLayout(null);
+		painelDadosLogin.setBounds(0, 0, 588, 142);
+		painelCadastro.add(painelDadosLogin);
+		painelDadosLogin.setLayout(null);
 
 		JLabel lblEmail = new JLabel("E-mail");
 		lblEmail.setBounds(10, 25, 90, 20);
-		panel.add(lblEmail);
+		painelDadosLogin.add(lblEmail);
 
 		txtEmail = new JTextField();
 		txtEmail.setColumns(10);
 		txtEmail.setBounds(10, 56, 240, 26);
-		panel.add(txtEmail);
+		painelDadosLogin.add(txtEmail);
 
 		JLabel lblSenha = new JLabel("Senha");
 		lblSenha.setBounds(324, 25, 90, 20);
-		panel.add(lblSenha);
+		painelDadosLogin.add(lblSenha);
 
 		campoSenha = new JPasswordField();
 		campoSenha.setBounds(324, 56, 180, 26);
-		panel.add(campoSenha);
+		painelDadosLogin.add(campoSenha);
 
+		// painel dados pessoais
+		JPanel painelDadosPessoais = painelDadosPessoal();
+
+		JLabel lblTelefone = new JLabel("Telefone");
+		lblTelefone.setBounds(10, 147, 90, 20);
+		painelDadosPessoais.add(lblTelefone);
+
+		JFormattedTextField campoTelefone = new JFormattedTextField(mascaraTelefone);
+		campoTelefone.setBounds(10, 178, 180, 26);
+		painelDadosPessoais.add(campoTelefone);
+
+		JLabel lblCpf = new JLabel("CPF");
+		lblCpf.setBounds(10, 79, 90, 20);
+		painelDadosPessoais.add(lblCpf);
+
+		final JFormattedTextField campoCpf = new JFormattedTextField(mascaraCpf);
+		campoCpf.setBounds(10, 110, 180, 26);
+		painelDadosPessoais.add(campoCpf);
+
+		JLabel lblDataDeNascimento = new JLabel("Data de Nascimento");
+		lblDataDeNascimento.setBounds(345, 10, 169, 23);
+		painelDadosPessoais.add(lblDataDeNascimento);
+
+		final JFormattedTextField formattedTxtDataNascimento = new JFormattedTextField(mascaraData);
+		formattedTxtDataNascimento.setBounds(345, 42, 180, 26);
+		painelDadosPessoais.add(formattedTxtDataNascimento);
+
+		JLabel lblCep = new JLabel("CEP");
+		lblCep.setBounds(345, 147, 90, 20);
+		painelDadosPessoais.add(lblCep);
+
+		JFormattedTextField campoCep = new JFormattedTextField(mascaraCep);
+		campoCep.setBounds(345, 178, 180, 26);
+		painelDadosPessoais.add(campoCep);
+
+		JLabel lblSexo = new JLabel("Sexo");
+		lblSexo.setBounds(345, 79, 90, 20);
+		painelDadosPessoais.add(lblSexo);
+
+		JComboBox comboBoxSexo = new JComboBox();
+		comboBoxSexo.setModel(new DefaultComboBoxModel(new String[] { "Selecione", "Masculino", "Feminino" }));
+		comboBoxSexo.setBounds(345, 111, 102, 25);
+		painelDadosPessoais.add(comboBoxSexo);
+
+		JButton btnCadastro = new JButton("Cadastrar");
+		btnCadastro.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				Usuario usuario = new Usuario(
+						txtNome.getText(), 
+						formattedTxtDataNascimento.getText(),
+						campoCpf.getText(), 
+						txtEmail.getText(), 
+						campoSenha.getText());
+				System.out.println(usuario.toString());
+
+			}
+		});
+		btnCadastro.setBounds(423, 370, 122, 34);
+		painelDadosPessoais.add(btnCadastro);
+	}
+
+	private JPanel painelDadosPessoal() {
 		JPanel painelDadosPessoais = new JPanel();
 		painelDadosPessoais.setBorder(new TitledBorder(
 				new EtchedBorder(EtchedBorder.LOWERED, new Color(255, 255, 255), new Color(160, 160, 160)),
@@ -111,14 +192,6 @@ public class TelaCadastro extends JFrame {
 		txtCidade.setBounds(10, 246, 180, 26);
 		painelDadosPessoais.add(txtCidade);
 
-		JLabel lblCep = new JLabel("CEP");
-		lblCep.setBounds(345, 147, 90, 20);
-		painelDadosPessoais.add(lblCep);
-
-		JFormattedTextField campoCep = new JFormattedTextField();
-		campoCep.setBounds(345, 178, 180, 26);
-		painelDadosPessoais.add(campoCep);
-
 		JLabel lblNumero = new JLabel("Numero");
 		lblNumero.setBounds(345, 300, 46, 14);
 		painelDadosPessoais.add(lblNumero);
@@ -137,39 +210,6 @@ public class TelaCadastro extends JFrame {
 		painelDadosPessoais.add(txtNome);
 		txtNome.setColumns(10);
 
-		JLabel lblTelefone = new JLabel("Telefone");
-		lblTelefone.setBounds(10, 147, 90, 20);
-		painelDadosPessoais.add(lblTelefone);
-
-		JFormattedTextField campoTelefone = new JFormattedTextField();
-		campoTelefone.setBounds(10, 178, 180, 26);
-		painelDadosPessoais.add(campoTelefone);
-
-		JLabel lblCpf = new JLabel("CPF");
-		lblCpf.setBounds(10, 79, 90, 20);
-		painelDadosPessoais.add(lblCpf);
-
-		final JFormattedTextField campoCpf = new JFormattedTextField();
-		campoCpf.setBounds(10, 110, 180, 26);
-		painelDadosPessoais.add(campoCpf);
-
-		JLabel lblDataDeNascimento = new JLabel("Data de Nascimento");
-		lblDataDeNascimento.setBounds(345, 10, 169, 23);
-		painelDadosPessoais.add(lblDataDeNascimento);
-
-		final JFormattedTextField formattedTxtDataNascimento = new JFormattedTextField();
-		formattedTxtDataNascimento.setBounds(345, 42, 180, 26);
-		painelDadosPessoais.add(formattedTxtDataNascimento);
-
-		JLabel lblSexo = new JLabel("Sexo");
-		lblSexo.setBounds(345, 79, 90, 20);
-		painelDadosPessoais.add(lblSexo);
-
-		JComboBox comboBoxSexo = new JComboBox();
-		comboBoxSexo.setModel(new DefaultComboBoxModel(new String[] { "Selecione", "Masculino", "Feminino" }));
-		comboBoxSexo.setBounds(345, 111, 102, 25);
-		painelDadosPessoais.add(comboBoxSexo);
-
 		JLabel lblBairro = new JLabel("Bairro");
 		lblBairro.setBounds(345, 218, 90, 20);
 		painelDadosPessoais.add(lblBairro);
@@ -179,21 +219,6 @@ public class TelaCadastro extends JFrame {
 		txtBairro.setBounds(345, 249, 200, 26);
 		painelDadosPessoais.add(txtBairro);
 
-		JButton btnCadastro = new JButton("Cadastrar");
-		btnCadastro.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				Usuario usuario = new Usuario(
-						txtNome.getText(), 
-						formattedTxtDataNascimento.getText(),
-						campoCpf.getText(), 
-						txtEmail.getText(), 
-						campoSenha.getText()
-						);
-				System.out.println(usuario.toString());
-
-			}
-		});
-		btnCadastro.setBounds(423, 370, 122, 34);
-		painelDadosPessoais.add(btnCadastro);
+		return painelDadosPessoais;
 	}
 }

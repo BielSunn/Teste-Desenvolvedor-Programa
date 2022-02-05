@@ -6,6 +6,8 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+
 import java.awt.Color;
 import javax.swing.JTextField;
 import javax.swing.JPasswordField;
@@ -16,7 +18,7 @@ import java.awt.event.ActionEvent;
 public class TelaLogin extends JFrame {
 
 	private JPanel painelLogin;
-	private JTextField textField;
+	private JTextField txtEmail;
 	private JPasswordField passwordField;
 
 	/**
@@ -55,10 +57,10 @@ public class TelaLogin extends JFrame {
 		lblEmail.setBounds(52, 146, 46, 14);
 		painelLogin.add(lblEmail);
 		
-		textField = new JTextField();
-		textField.setBounds(52, 167, 374, 28);
-		painelLogin.add(textField);
-		textField.setColumns(10);
+		txtEmail = new JTextField();
+		txtEmail.setBounds(52, 167, 374, 28);
+		painelLogin.add(txtEmail);
+		txtEmail.setColumns(10);
 		
 		JLabel lblSenha = new JLabel("Senha");
 		lblSenha.setBounds(52, 238, 46, 14);
@@ -69,6 +71,14 @@ public class TelaLogin extends JFrame {
 		painelLogin.add(passwordField);
 		
 		JButton btnEntrar = new JButton("Entrar");
+		btnEntrar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				if (txtEmail.getText().equals("teste@gmail")
+					&& passwordField.getText().equals("123@")) {
+					JOptionPane.showMessageDialog(null, "Login realizado");
+				}
+			}
+		});
 		btnEntrar.setBounds(52, 341, 104, 28);
 		painelLogin.add(btnEntrar);
 		
