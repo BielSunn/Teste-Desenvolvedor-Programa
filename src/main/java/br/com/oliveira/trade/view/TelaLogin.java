@@ -1,3 +1,4 @@
+package br.com.oliveira.trade.view;
 import java.awt.BorderLayout;
 import java.awt.EventQueue;
 
