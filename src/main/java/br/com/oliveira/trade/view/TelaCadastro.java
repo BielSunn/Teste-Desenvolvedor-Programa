@@ -4,14 +4,17 @@ import java.awt.Color;
 import java.awt.EventQueue;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.sql.SQLException;
 import java.text.ParseException;
 
+import javax.swing.ButtonGroup;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JFormattedTextField;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
@@ -19,7 +22,9 @@ import javax.swing.border.EtchedBorder;
 import javax.swing.border.TitledBorder;
 import javax.swing.text.MaskFormatter;
 
+import br.com.oliveira.trade.controller.UsuarioController;
 import br.com.oliveira.trade.model.Usuario;
+import javax.swing.JRadioButton;
 
 public class TelaCadastro extends JFrame {
 
@@ -31,6 +36,8 @@ public class TelaCadastro extends JFrame {
 	private JTextField txtCidade;
 	private JTextField txtNumero;
 	private JTextField txtBairro;
+	private ButtonGroup tipoSexo = new ButtonGroup();
+	private JTextField txtTelefone;
 
 	/**
 	 * Launch the application.
@@ -107,13 +114,9 @@ public class TelaCadastro extends JFrame {
 		// painel dados pessoais
 		JPanel painelDadosPessoais = painelDadosPessoal();
 
-		JLabel lblTelefone = new JLabel("Telefone");
-		lblTelefone.setBounds(10, 147, 90, 20);
-		painelDadosPessoais.add(lblTelefone);
-
-		JFormattedTextField campoTelefone = new JFormattedTextField(mascaraTelefone);
-		campoTelefone.setBounds(10, 178, 180, 26);
-		painelDadosPessoais.add(campoTelefone);
+//		final JFormattedTextField campoTelefone = new JFormattedTextField();
+//		campoTelefone.setBounds(10, 397, 180, 26);
+//		painelDadosPessoais.add(campoTelefone);
 
 		JLabel lblCpf = new JLabel("CPF");
 		lblCpf.setBounds(10, 79, 90, 20);
@@ -139,25 +142,33 @@ public class TelaCadastro extends JFrame {
 		campoCep.setBounds(345, 178, 180, 26);
 		painelDadosPessoais.add(campoCep);
 
-		JLabel lblSexo = new JLabel("Sexo");
-		lblSexo.setBounds(345, 79, 90, 20);
-		painelDadosPessoais.add(lblSexo);
-
-		JComboBox comboBoxSexo = new JComboBox();
-		comboBoxSexo.setModel(new DefaultComboBoxModel(new String[] { "Selecione", "Masculino", "Feminino" }));
-		comboBoxSexo.setBounds(345, 111, 102, 25);
-		painelDadosPessoais.add(comboBoxSexo);
-
 		JButton btnCadastro = new JButton("Cadastrar");
+		
 		btnCadastro.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+
 				Usuario usuario = new Usuario(
 						txtNome.getText(), 
 						formattedTxtDataNascimento.getText(),
 						campoCpf.getText(), 
 						txtEmail.getText(), 
-						campoSenha.getText());
+						new String(campoSenha.getPassword()),
+						txtTelefone.getText(), 
+						tipoSexo.getSelection().getActionCommand()
+						);
 				System.out.println(usuario.toString());
+				System.out.println(tipoSexo.getSelection().getActionCommand());
+				
+				UsuarioController usuarioController = new UsuarioController();
+				try {
+					usuarioController.cadastrar(usuario);
+					JOptionPane.showMessageDialog(null, "Usuário " + txtNome.getText() + " foi cadastrado com sucesso");
+				} catch (SQLException e1) {
+					JOptionPane.showMessageDialog(null, "Erro SQL: " + e1.getMessage(), "Erro ao cadastrar", JOptionPane.ERROR_MESSAGE);
+					e1.printStackTrace();
+				} catch (NumberFormatException erroNumber) {
+					JOptionPane.showMessageDialog(null, "Erro String " + erroNumber.getMessage(), "Erro ao cadastrar", JOptionPane.ERROR_MESSAGE);
+				}
 
 			}
 		});
@@ -166,6 +177,7 @@ public class TelaCadastro extends JFrame {
 	}
 
 	private JPanel painelDadosPessoal() {
+
 		JPanel painelDadosPessoais = new JPanel();
 		painelDadosPessoais.setBorder(new TitledBorder(
 				new EtchedBorder(EtchedBorder.LOWERED, new Color(255, 255, 255), new Color(160, 160, 160)),
@@ -174,14 +186,14 @@ public class TelaCadastro extends JFrame {
 		painelCadastro.add(painelDadosPessoais);
 		painelDadosPessoais.setLayout(null);
 
+		JLabel lblEndereco = new JLabel("Endereco");
+		lblEndereco.setBounds(10, 297, 90, 20);
+		painelDadosPessoais.add(lblEndereco);
+
 		txtEndereco = new JTextField();
 		txtEndereco.setColumns(10);
 		txtEndereco.setBounds(10, 328, 240, 26);
 		painelDadosPessoais.add(txtEndereco);
-
-		JLabel lblEndereco = new JLabel("Endereco");
-		lblEndereco.setBounds(10, 297, 90, 20);
-		painelDadosPessoais.add(lblEndereco);
 
 		JLabel lblCidade = new JLabel("Cidade");
 		lblCidade.setBounds(10, 215, 90, 20);
@@ -218,6 +230,32 @@ public class TelaCadastro extends JFrame {
 		txtBairro.setColumns(10);
 		txtBairro.setBounds(345, 249, 200, 26);
 		painelDadosPessoais.add(txtBairro);
+		
+		JLabel lblSexo = new JLabel("Sexo");
+		lblSexo.setBounds(345, 79, 90, 20);
+		painelDadosPessoais.add(lblSexo);
+
+		JRadioButton rdbtnMasculino = new JRadioButton("Masculino");
+		rdbtnMasculino.setActionCommand("Masculino");
+		rdbtnMasculino.setBounds(341, 112, 109, 23);
+		painelDadosPessoais.add(rdbtnMasculino);
+
+		JRadioButton rdbtnFeminino = new JRadioButton("Feminino");
+		rdbtnFeminino.setActionCommand("Feminino");
+		rdbtnFeminino.setBounds(452, 112, 109, 23);
+		painelDadosPessoais.add(rdbtnFeminino);
+
+		tipoSexo.add(rdbtnMasculino);
+		tipoSexo.add(rdbtnFeminino);
+
+		JLabel lblTelefone = new JLabel("Telefone");
+		lblTelefone.setBounds(10, 147, 90, 20);
+		painelDadosPessoais.add(lblTelefone);
+
+		txtTelefone = new JTextField();
+		txtTelefone.setColumns(10);
+		txtTelefone.setBounds(10, 178, 180, 26);
+		painelDadosPessoais.add(txtTelefone);
 
 		return painelDadosPessoais;
 	}

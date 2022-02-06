@@ -26,7 +26,7 @@ public class ConnectionFactory {
 	 */
 	
 	public static Connection getConnection() throws SQLException {
-		String url = "jdbc:postgresql://localhost:5432/postgres";
+		String url = "jdbc:postgresql://localhost:5432/teste";
 		String usuario = "postgres";
 		String senha = "123";
 		
