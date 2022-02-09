@@ -14,5 +14,15 @@ public class UsuarioController {
 		usuarioDao.cadastrar(usuario);
 		
 	}
+	
+	public boolean verificarLogin(Usuario usuario) throws SQLException {
+		
+		UsuarioDao usuarioDao = new UsuarioDao();
+		
+		boolean checkLogin = usuarioDao.verificarLogin(usuario);
+		
+		return checkLogin;
+		
+	}
 
 }

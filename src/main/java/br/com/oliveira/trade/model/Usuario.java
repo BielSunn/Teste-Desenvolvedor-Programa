@@ -1,24 +1,50 @@
 package br.com.oliveira.trade.model;
 
 public class Usuario {
-	private long idUsuario;
+	private Usuario idUsuario;
 	private String nome;
 	private String dataDeNascimento;
 	private String cpf;
+	private String sexo;
 	private String email;
 	private String senha;
-	private String numeroTelefone;
-	private String sexo;
+	private int numeroTelefone;
+	private Endereco endereco;
 
-	public Usuario(String nome, String dataDeNascimento, String cpf, String email, String senha, String numeroTelefone,
-			String sexo) {
+	public Usuario() {
+	}
+
+	public Usuario(String nome, String dataDeNascimento, String cpf, String sexo, String email, String senha,
+			int numeroTelefone) {
+		super();
 		this.nome = nome;
 		this.dataDeNascimento = dataDeNascimento;
 		this.cpf = cpf;
+		this.sexo = sexo;
 		this.email = email;
 		this.senha = senha;
 		this.numeroTelefone = numeroTelefone;
+	}
+
+	public Usuario(String nome, String dataDeNascimento, String cpf, String sexo, String email, String senha,
+			int numeroTelefone, Endereco endereco) {
+		super();
+		this.nome = nome;
+		this.dataDeNascimento = dataDeNascimento;
+		this.cpf = cpf;
 		this.sexo = sexo;
+		this.email = email;
+		this.senha = senha;
+		this.numeroTelefone = numeroTelefone;
+		this.endereco = endereco;
+	}
+
+	public Usuario getIdUsuario() {
+		return idUsuario;
+	}
+
+	public void setIdUsuario(Usuario idUsuario) {
+		this.idUsuario = idUsuario;
 	}
 
 	public String getNome() {
@@ -45,6 +71,14 @@ public class Usuario {
 		this.cpf = cpf;
 	}
 
+	public String getSexo() {
+		return sexo;
+	}
+
+	public void setSexo(String sexo) {
+		this.sexo = sexo;
+	}
+
 	public String getEmail() {
 		return email;
 	}
@@ -61,26 +95,27 @@ public class Usuario {
 		this.senha = senha;
 	}
 
-	public String getNumeroTelefone() {
+	public int getNumeroTelefone() {
 		return numeroTelefone;
 	}
 
-	public void setNumeroTelefone(String numeroTelefone) {
+	public void setNumeroTelefone(int numeroTelefone) {
 		this.numeroTelefone = numeroTelefone;
 	}
 
-	public String getSexo() {
-		return sexo;
+	public Endereco getEndereco() {
+		return endereco;
 	}
 
-	public void setSexo(String sexo) {
-		this.sexo = sexo;
+	public void setEndereco(Endereco endereco) {
+		this.endereco = endereco;
 	}
 
 	@Override
 	public String toString() {
-		return "Usuario [nome=" + nome + ", dataDeNascimento=" + dataDeNascimento + ", cpf=" + cpf + ", email=" + email
-				+ ", senha=" + senha + ", numeroTelefone=" + numeroTelefone + ", sexo=" + sexo + "]";
+		return "Usuario [nome=" + nome + ", dataDeNascimento=" + dataDeNascimento + ", cpf=" + cpf + ", sexo=" + sexo
+				+ ", email=" + email + ", senha=" + senha + ", numeroTelefone=" + numeroTelefone + ", endereco="
+				+ endereco + "]";
 	}
 
 }
