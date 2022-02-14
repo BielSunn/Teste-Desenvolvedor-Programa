@@ -22,7 +22,7 @@ public class UsuarioDao {
 				+ "(?, ?, ?, ?, ?, ?, ?)";
 
 		PreparedStatement ps = conn.prepareStatement(sql);
-
+		
 		ps.setString(1, usuario.getNome());
 		ps.setString(2, usuario.getDataDeNascimento());
 		ps.setString(3, usuario.getCpf());
@@ -30,7 +30,7 @@ public class UsuarioDao {
 		ps.setString(5, usuario.getEmail());
 		ps.setString(6, usuario.getSenha());
 		ps.setInt(7, usuario.getNumeroTelefone());
-		ps.setObject(0, usuario.getEndereco());
+	//	ps.setObject(0, usuario.getEndereco());
 
 		return ps.executeUpdate();
 

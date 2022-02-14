@@ -18,7 +18,7 @@ import javax.swing.border.EmptyBorder;
 import br.com.oliveira.trade.controller.UsuarioController;
 import br.com.oliveira.trade.model.Usuario;
 
-public class TelaLogin2 extends JFrame {
+public class TelaLogin extends JFrame {
 
 	private JPanel painelLogin;
 	private JTextField txtEmail;
@@ -31,7 +31,7 @@ public class TelaLogin2 extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					TelaLogin2 frame = new TelaLogin2();
+					TelaLogin frame = new TelaLogin();
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -43,7 +43,7 @@ public class TelaLogin2 extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public TelaLogin2() {
+	public TelaLogin() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 512, 506);
 		painelLogin = new JPanel();
@@ -82,7 +82,7 @@ public class TelaLogin2 extends JFrame {
 
 				Usuario usuario = new Usuario();
 				usuario.setEmail(txtEmail.getText());
-				usuario.setSenha(new String (passwordField.getPassword()) );
+				usuario.setSenha(new String(passwordField.getPassword()));
 				UsuarioController usuarioController = new UsuarioController();
 
 			}
@@ -93,7 +93,7 @@ public class TelaLogin2 extends JFrame {
 		JButton btnCadastrar = new JButton("Cadastrar");
 		btnCadastrar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				new TelaCadastro2();
+				new TelaCadastro();
 				// dispose(); // fecha a tela de login
 				setVisible(false);
 
@@ -105,6 +105,6 @@ public class TelaLogin2 extends JFrame {
 		JLabel lblNewLabel = new JLabel("Cadastre-se aqui");
 		lblNewLabel.setBounds(326, 325, 104, 28);
 		painelLogin.add(lblNewLabel);
-	}
 
+	}
 }

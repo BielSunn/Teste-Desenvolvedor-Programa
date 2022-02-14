@@ -1,7 +1,7 @@
 package br.com.oliveira.trade.model;
 
 public class Usuario {
-	private Usuario idUsuario;
+	private Long idUsuario;
 	private String nome;
 	private String dataDeNascimento;
 	private String cpf;
@@ -9,7 +9,6 @@ public class Usuario {
 	private String email;
 	private String senha;
 	private int numeroTelefone;
-	private Endereco endereco;
 
 	public Usuario() {
 	}
@@ -26,24 +25,11 @@ public class Usuario {
 		this.numeroTelefone = numeroTelefone;
 	}
 
-	public Usuario(String nome, String dataDeNascimento, String cpf, String sexo, String email, String senha,
-			int numeroTelefone, Endereco endereco) {
-		super();
-		this.nome = nome;
-		this.dataDeNascimento = dataDeNascimento;
-		this.cpf = cpf;
-		this.sexo = sexo;
-		this.email = email;
-		this.senha = senha;
-		this.numeroTelefone = numeroTelefone;
-		this.endereco = endereco;
-	}
-
-	public Usuario getIdUsuario() {
+	public Long getIdUsuario() {
 		return idUsuario;
 	}
 
-	public void setIdUsuario(Usuario idUsuario) {
+	public void setIdUsuario(Long idUsuario) {
 		this.idUsuario = idUsuario;
 	}
 
@@ -103,19 +89,10 @@ public class Usuario {
 		this.numeroTelefone = numeroTelefone;
 	}
 
-	public Endereco getEndereco() {
-		return endereco;
-	}
-
-	public void setEndereco(Endereco endereco) {
-		this.endereco = endereco;
-	}
-
 	@Override
 	public String toString() {
-		return "Usuario [nome=" + nome + ", dataDeNascimento=" + dataDeNascimento + ", cpf=" + cpf + ", sexo=" + sexo
-				+ ", email=" + email + ", senha=" + senha + ", numeroTelefone=" + numeroTelefone + ", endereco="
-				+ endereco + "]";
+		return "Usuario [idUsuario=" + idUsuario + ", nome=" + nome + ", dataDeNascimento=" + dataDeNascimento
+				+ ", cpf=" + cpf + ", sexo=" + sexo + ", email=" + email + ", senha=" + senha + ", numeroTelefone="
+				+ numeroTelefone + "]";
 	}
-
 }

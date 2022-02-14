@@ -1,6 +1,5 @@
 package br.com.oliveira.trade.view;
 
-import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.EventQueue;
 import java.awt.event.ActionEvent;
@@ -20,7 +19,6 @@ import javax.swing.JPanel;
 import javax.swing.JPasswordField;
 import javax.swing.JRadioButton;
 import javax.swing.JTextField;
-import javax.swing.border.EmptyBorder;
 import javax.swing.border.EtchedBorder;
 import javax.swing.border.TitledBorder;
 import javax.swing.text.MaskFormatter;
@@ -30,10 +28,13 @@ import br.com.oliveira.trade.controller.UsuarioController;
 import br.com.oliveira.trade.model.Endereco;
 import br.com.oliveira.trade.model.Usuario;
 
-public class TelaCadastro2 extends JFrame {
+public class TelaCadastro extends JFrame {
 
+	/**
+	 * 
+	 */
 	private static final long serialVersionUID = 1L;
-
+	
 	private JPanel painelCadastro;
 	private JTextField txtNome;
 	private JTextField txtEmail;
@@ -52,7 +53,7 @@ public class TelaCadastro2 extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					TelaCadastro2 frame = new TelaCadastro2();
+					TelaCadastro frame = new TelaCadastro();
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -64,7 +65,7 @@ public class TelaCadastro2 extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public TelaCadastro2() {
+	public TelaCadastro() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 626, 671);
 		painelCadastro = new JPanel();
@@ -139,17 +140,23 @@ public class TelaCadastro2 extends JFrame {
 		btnCadastro.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 
-				if (txtNome.getText().equals("") || formattedTxtDataNascimento.getText().equals("")
-						|| campoCpf.getText().equals("") || tipoSexo.getSelection() == null
-						|| txtTelefone.getText().equals("") || txtEmail.getText().equals("")
-						|| new String(campoSenha.getPassword()).equals("") || comboBoxEstados.getSelectedItem() == null
-						|| txtCidade.getText().equals("") || txtBairro.getText().equals("")
-						|| txtCep.getText().equals("") || txtLogradouro.getText().equals("")) {
+				if (txtNome.getText().equals("") 
+						|| formattedTxtDataNascimento.getText().equals("")
+						|| campoCpf.getText().equals("") 
+						|| tipoSexo.getSelection() == null
+						|| txtTelefone.getText().equals("") 
+						|| txtEmail.getText().equals("")
+						|| new String(campoSenha.getPassword()).equals("") 
+						|| comboBoxEstados.getSelectedItem() == null
+						|| txtCidade.getText().equals("") 
+						|| txtBairro.getText().equals("")
+						|| txtCep.getText().equals("") 
+						|| txtLogradouro.getText().equals("")) {
 					JOptionPane.showMessageDialog(null, "Preencha todos os campos ", "Erro ao cadastrar",
 							JOptionPane.ERROR_MESSAGE);
 				} else {
-					
-					//inserindo dados de endereco pelo construtor
+
+					// inserindo dados de endereco pelo construtor
 					Endereco endereco = new Endereco(
 //							endereco.getIdUsuario().getIdUsuario(),
 							String.valueOf(comboBoxEstados.getSelectedItem()), 
@@ -158,18 +165,17 @@ public class TelaCadastro2 extends JFrame {
 							Integer.parseInt(txtCep.getText()), 
 							txtLogradouro.getText()
 							);
-					
-					//inserindo dados de usuario pelo setter
-					Usuario usuario = new Usuario();
-							usuario.setNome(txtNome.getText()); //nome
-							usuario.setDataDeNascimento(formattedTxtDataNascimento.getText());
-							usuario.setCpf(campoCpf.getText()); 
-							usuario.setSexo(tipoSexo.getSelection().getActionCommand());
-							usuario.setEmail(txtEmail.getText());
-							usuario.setSenha(new String(campoSenha.getPassword()) ); 
-							usuario.setNumeroTelefone(Integer.parseInt(txtTelefone.getText()));
-							usuario.setEndereco(endereco);
 
+
+					// inserindo dados de usuario pelo setter
+					Usuario usuario = new Usuario();
+					usuario.setNome(txtNome.getText()); // nome
+					usuario.setDataDeNascimento(formattedTxtDataNascimento.getText());
+					usuario.setCpf(campoCpf.getText());
+					usuario.setSexo(tipoSexo.getSelection().getActionCommand());
+					usuario.setEmail(txtEmail.getText());
+					usuario.setSenha(new String(campoSenha.getPassword()));
+					usuario.setNumeroTelefone(Integer.parseInt(txtTelefone.getText()));
 
 					System.out.println(usuario.toString());
 					System.out.println(tipoSexo.getSelection().getActionCommand());
@@ -305,6 +311,5 @@ public class TelaCadastro2 extends JFrame {
 		painelDadosPessoais.add(txtCep);
 
 		return painelDadosPessoais;
-
 	}
 }
