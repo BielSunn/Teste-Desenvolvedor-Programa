@@ -3,17 +3,17 @@ package br.com.oliveira.trade.model;
 public class Endereco {
 
 	private long idEndereco;
-	private Usuario idUsuario;
+	private Usuario usuario;
 	private String estado;
 	private String cidade;
 	private String bairro;
-	private int cep;
+	private String cep;
 	private String logradouro;
 
 	public Endereco() {
 	}
 
-	public Endereco(String estado, String cidade, String bairro, int cep, String logradouro) {
+	public Endereco(String estado, String cidade, String bairro, String cep, String logradouro) {
 		super();
 		this.estado = estado;
 		this.cidade = cidade;
@@ -30,12 +30,12 @@ public class Endereco {
 		this.idEndereco = idEndereco;
 	}
 
-	public Usuario getIdUsuario() {
-		return idUsuario;
+	public Usuario getUsuario() {
+		return usuario;
 	}
 
-	public void setIdUsuario(Usuario idUsuario) {
-		this.idUsuario = idUsuario;
+	public void setUsuario(Usuario usuario) {
+		this.usuario = usuario;
 	}
 
 	public String getEstado() {
@@ -62,11 +62,11 @@ public class Endereco {
 		this.bairro = bairro;
 	}
 
-	public int getCep() {
+	public String getCep() {
 		return cep;
 	}
 
-	public void setCep(int cep) {
+	public void setCep(String cep) {
 		this.cep = cep;
 	}
 

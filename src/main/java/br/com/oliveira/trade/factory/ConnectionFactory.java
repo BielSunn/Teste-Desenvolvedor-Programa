@@ -6,19 +6,26 @@ import java.sql.SQLException;
 
 public class ConnectionFactory {
 
+	private static Connection conn;
+
 	/**
-	 * Método utilizado para conectar-se com banco de dados
+	 * Método utilizado para criar uma conexão. A conexão será feita caso não tenha
+	 * nenhuma feita.
 	 * 
-	 * @return conexão com banco de dados
+	 * @return -> conexão com banco de dados
 	 * @throws SQLException - caso ocorra algum erro na conexão
 	 */
 
 	public static Connection getConnection() throws SQLException {
-		String url = "jdbc:postgresql://localhost:5432/teste";
-		String usuario = "postgres";
-		String senha = "123";
 
-		Connection conn = DriverManager.getConnection(url, usuario, senha);
+		if (conn == null) {
+
+			String url = "jdbc:postgresql://localhost:5432/teste";
+			String usuario = "postgres";
+			String senha = "123";
+			conn = DriverManager.getConnection(url, usuario, senha);
+
+		}
 
 		return conn;
 	}

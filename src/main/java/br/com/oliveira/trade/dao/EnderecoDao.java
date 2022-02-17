@@ -13,16 +13,16 @@ public class EnderecoDao {
 
 		Connection conn = ConnectionFactory.getConnection();
 
-		String sql = "INSERT INTO T_OT_ENDERECO (nm_estado, nm_cidade, nm_bairro, nr_cep, ds_logradouro) VALUES"
-				+ "(?, ?, ?, ?, ?)";
+		String sql = "INSERT INTO T_OT_ENDERECO (id_usuario, nm_estado, nm_cidade, nm_bairro, nr_cep, ds_logradouro) VALUES"
+				+ "(?, ?, ?, ?, ?, ?)";
 
 		PreparedStatement ps = conn.prepareStatement(sql);
 
-//		ps.setLong(1, endereco.getIdUsuario().getIdUsuario());
+		ps.setLong(1, endereco.getUsuario().getId());
 		ps.setString(1, endereco.getEstado());
 		ps.setString(2, endereco.getCidade());
 		ps.setString(3, endereco.getBairro());
-		ps.setInt(4, endereco.getCep());
+		ps.setString(4, endereco.getCep());
 		ps.setString(5, endereco.getLogradouro());
 		
 		return ps.executeUpdate();

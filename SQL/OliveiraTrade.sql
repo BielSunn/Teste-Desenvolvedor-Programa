@@ -4,7 +4,7 @@ drop table T_OT_ENDERECO CASCADE;
 create table T_OT_USUARIO(
 	id_usuario serial CONSTRAINT PK_OT_USUARIO primary key,
 	nm_usuario varchar(20),
-	dt_nascimento varchar(30),
+	dt_nascimento date,
 	nr_cpf varchar(20) not null,
 	tp_sexo varchar(20) not null,
 	ds_email varchar(100) not null,

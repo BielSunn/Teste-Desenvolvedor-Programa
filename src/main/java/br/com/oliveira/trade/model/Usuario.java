@@ -1,9 +1,11 @@
 package br.com.oliveira.trade.model;
 
+import java.time.LocalDate;
+
 public class Usuario {
-	private Long idUsuario;
+	private Long id;
 	private String nome;
-	private String dataDeNascimento;
+	private LocalDate dataDeNascimento;
 	private String cpf;
 	private String sexo;
 	private String email;
@@ -13,7 +15,7 @@ public class Usuario {
 	public Usuario() {
 	}
 
-	public Usuario(String nome, String dataDeNascimento, String cpf, String sexo, String email, String senha,
+	public Usuario(String nome, LocalDate dataDeNascimento, String cpf, String sexo, String email, String senha,
 			int numeroTelefone) {
 		super();
 		this.nome = nome;
@@ -25,12 +27,18 @@ public class Usuario {
 		this.numeroTelefone = numeroTelefone;
 	}
 
-	public Long getIdUsuario() {
-		return idUsuario;
+	public Usuario(String email, String senha) {
+		super();
+		this.email = email;
+		this.senha = senha;
 	}
 
-	public void setIdUsuario(Long idUsuario) {
-		this.idUsuario = idUsuario;
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
 	}
 
 	public String getNome() {
@@ -41,11 +49,11 @@ public class Usuario {
 		this.nome = nome;
 	}
 
-	public String getDataDeNascimento() {
+	public LocalDate getDataDeNascimento() {
 		return dataDeNascimento;
 	}
 
-	public void setDataDeNascimento(String dataDeNascimento) {
+	public void setDataDeNascimento(LocalDate dataDeNascimento) {
 		this.dataDeNascimento = dataDeNascimento;
 	}
 
@@ -91,8 +99,8 @@ public class Usuario {
 
 	@Override
 	public String toString() {
-		return "Usuario [idUsuario=" + idUsuario + ", nome=" + nome + ", dataDeNascimento=" + dataDeNascimento
-				+ ", cpf=" + cpf + ", sexo=" + sexo + ", email=" + email + ", senha=" + senha + ", numeroTelefone="
-				+ numeroTelefone + "]";
+		return "Usuario [idUsuario=" + id + ", nome=" + nome + ", dataDeNascimento=" + dataDeNascimento + ", cpf=" + cpf
+				+ ", sexo=" + sexo + ", email=" + email + ", senha=" + senha + ", numeroTelefone=" + numeroTelefone
+				+ "]";
 	}
 }

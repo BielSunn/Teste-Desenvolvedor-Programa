@@ -3,8 +3,8 @@ TO DO:
 -ver como colocar chave estrangeira de endereço no Usuário
 -colocar verificação de login pelo email e senha
 -criar a tela do sistema(apos fazer login)
--Colocar Singleton na fabrica de conexao
+-Colocar Singleton na fabrica de conexao -OK
 -Gerar Javadoc
--colocar Data na dt_nascimento em Usuário
+-colocar Data na dt_nascimento em Usuário -OK
 -fazer um doc explicando o projeto
 -colocar imgs explicando projeto no git

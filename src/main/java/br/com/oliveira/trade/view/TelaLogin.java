@@ -1,10 +1,10 @@
 package br.com.oliveira.trade.view;
 
-import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.EventQueue;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.sql.SQLException;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -22,7 +22,7 @@ public class TelaLogin extends JFrame {
 
 	private JPanel painelLogin;
 	private JTextField txtEmail;
-	private JPasswordField passwordField;
+	private JPasswordField campoSenha;
 
 	/**
 	 * Launch the application.
@@ -69,21 +69,28 @@ public class TelaLogin extends JFrame {
 		lblSenha.setBounds(52, 238, 46, 14);
 		painelLogin.add(lblSenha);
 
-		passwordField = new JPasswordField();
-		passwordField.setBounds(52, 263, 374, 28);
-		painelLogin.add(passwordField);
+		campoSenha = new JPasswordField();
+		campoSenha.setBounds(52, 263, 374, 28);
+		painelLogin.add(campoSenha);
 
 		JButton btnEntrar = new JButton("Entrar");
 		btnEntrar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				if (txtEmail.getText().equals("teste@gmail") && passwordField.getText().equals("123@")) {
-					JOptionPane.showMessageDialog(null, "Login realizado");
-				}
 
-				Usuario usuario = new Usuario();
-				usuario.setEmail(txtEmail.getText());
-				usuario.setSenha(new String(passwordField.getPassword()));
+				Usuario usuario = new Usuario(txtEmail.getText(), new String(campoSenha.getPassword()));
+
 				UsuarioController usuarioController = new UsuarioController();
+
+				try {
+					if (usuarioController.verificarLogin(usuario)) {
+						JOptionPane.showMessageDialog(null, "Login realizado");
+					} else 
+						JOptionPane.showMessageDialog(null, "Email e/ou Senha inválido(s)",
+							"Erro de login", JOptionPane.ERROR_MESSAGE);
+				} catch (SQLException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
 
 			}
 		});
@@ -93,9 +100,9 @@ public class TelaLogin extends JFrame {
 		JButton btnCadastrar = new JButton("Cadastrar");
 		btnCadastrar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				dispose(); // fecha a tela de login
 				new TelaCadastro();
-				// dispose(); // fecha a tela de login
-				setVisible(false);
+				//setVisible(false);
 
 			}
 		});
