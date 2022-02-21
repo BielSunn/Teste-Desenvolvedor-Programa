@@ -116,7 +116,7 @@ public class TelaCadastro extends JFrame {
 		campoCepFormatado.setBounds(10, 314, 180, 26);
 		painelDadosPessoais.add(campoCepFormatado);
 
-		final JButton btnCadastro = new JButton("Cadastrar");
+		JButton btnCadastro = new JButton("Cadastrar");
 
 		btnCadastro.addActionListener(new ActionListener() {
 
@@ -142,31 +142,31 @@ public class TelaCadastro extends JFrame {
 							JOptionPane.ERROR_MESSAGE);
 				} else {
 
-					String dataNascimento = formattedTxtDataNascimento.getText();
-					DateTimeFormatter dataFormada = DateTimeFormatter.ofPattern("dd/MM/yyyy");
-					LocalDate dataFormatada = LocalDate.parse(dataNascimento, dataFormada);
-
-					Usuario usuario = new Usuario(
-							txtNome.getText(), 
-							dataFormatada, 
-							campoCpf.getText(),
-							tipoSexo.getSelection().getActionCommand(),
-							txtEmail.getText(),
-							new String(campoSenha.getPassword()),
-							Integer.parseInt(txtTelefone.getText()),
-							String.valueOf(comboBoxEstados.getSelectedItem()),
-							txtCidade.getText(),
-							txtBairro.getText(),
-							campoCepFormatado.getText(),
-							txtLogradouro.getText()
-							);
-
-					UsuarioController usuarioController = new UsuarioController();
-					System.out.println("user antes cadastro: " + usuario.toString());
-
 					try {
+						String dataNascimento = formattedTxtDataNascimento.getText();
+						DateTimeFormatter dataFormada = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+						LocalDate dataFormatada = LocalDate.parse(dataNascimento, dataFormada);
+
+						Usuario usuario = new Usuario(
+								txtNome.getText(), 
+								dataFormatada, 
+								campoCpf.getText(),
+								tipoSexo.getSelection().getActionCommand(),
+								txtEmail.getText(),
+								new String(campoSenha.getPassword()),
+								Integer.parseInt(txtTelefone.getText()),
+								String.valueOf(comboBoxEstados.getSelectedItem()),
+								txtCidade.getText(),
+								txtBairro.getText(),
+								campoCepFormatado.getText(),
+								txtLogradouro.getText()
+								);
+
+						UsuarioController usuarioController = new UsuarioController();
+						
+						
 						usuarioController.cadastrar(usuario);
-						System.out.println("user apos cadastro: " + usuario.toString());
+//						System.out.println("user apos cadastro: " + usuario.toString());
 
 						JOptionPane.showMessageDialog(null,
 								"Usuário " + txtNome.getText() + " foi cadastrado com sucesso");
@@ -179,7 +179,7 @@ public class TelaCadastro extends JFrame {
 						e1.printStackTrace();
 					} catch (NumberFormatException erroNumber) {
 						JOptionPane.showMessageDialog(null,
-								"Digite somente números no telefone " + erroNumber.getMessage(), "Erro ao cadastrar",
+								"Digite somente números no telefone: " + erroNumber.getMessage(), "Erro ao cadastrar",
 								JOptionPane.ERROR_MESSAGE);
 						erroNumber.printStackTrace();
 					} catch (DateTimeParseException erroData) {

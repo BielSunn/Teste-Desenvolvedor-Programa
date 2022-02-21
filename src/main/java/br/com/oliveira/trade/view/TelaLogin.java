@@ -66,9 +66,9 @@ public class TelaLogin extends JFrame {
 		JButton btnEntrar = new JButton("Entrar");
 
 		/**
-		 * Ao clicar no botao "Entrar", será verificado se existe o email e senha. Caso
-		 * sim será redirecionado para a tela do sistema Caso não exista ou foi
-		 * informado algum dado incorreto será mostrado uma mensagem de erro
+		 * Ao clicar no botão "Entrar", será verificado se existe o email e senha. Caso
+		 * sim será redirecionado para a tela do sistema. Caso não exista ou foi
+		 * informado algum dado incorreto será mostrado uma mensagem de erro.
 		 */
 		btnEntrar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {

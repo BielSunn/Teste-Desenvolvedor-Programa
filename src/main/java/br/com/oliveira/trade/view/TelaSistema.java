@@ -9,7 +9,7 @@ import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
 /**
- * Classe correspondente a Tela de Acesso Sistema
+ * Classe correspondente a Tela de Acesso do Sistema
  * 
  * @author Gabriel Sun
  *
@@ -34,6 +34,9 @@ public class TelaSistema extends JFrame {
 		lblSistema.setBounds(199, 84, 157, 98);
 		painelPrincipal.add(lblSistema);
 
+		/**
+		 * Botão "Sair": sai do sistema e volta para a tela de Login.
+		 */
 		JButton btnSair = new JButton("Sair");
 		btnSair.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
