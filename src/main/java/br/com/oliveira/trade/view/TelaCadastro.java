@@ -176,12 +176,12 @@ public class TelaCadastro extends JFrame {
 					} catch (SQLException e1) {
 						JOptionPane.showMessageDialog(null, "Erro SQL: " + e1.getMessage(), "Erro ao cadastrar",
 								JOptionPane.ERROR_MESSAGE);
-						e1.printStackTrace();
+//						e1.printStackTrace();
 					} catch (NumberFormatException erroNumber) {
 						JOptionPane.showMessageDialog(null,
 								"Digite somente números no telefone", "Erro ao cadastrar",
 								JOptionPane.ERROR_MESSAGE);
-						erroNumber.printStackTrace();
+//						erroNumber.printStackTrace();
 					} catch (DateTimeParseException erroData) {
 						JOptionPane.showMessageDialog(null, "Digite uma data válida",
 								"Erro ao cadastrar", JOptionPane.ERROR_MESSAGE);
