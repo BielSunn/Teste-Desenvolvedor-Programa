@@ -35,7 +35,7 @@ public class TelaLogin extends JFrame {
 	public TelaLogin() {
 		setTitle("Oliveira Trade");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 562, 579);
+		setBounds(100, 100, 593, 602);
 		painelLogin = new JPanel();
 		painelLogin.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(painelLogin);
@@ -43,7 +43,7 @@ public class TelaLogin extends JFrame {
 
 		JLabel lblNomeEmpresa = new JLabel("Oliveira Trade");
 		lblNomeEmpresa.setBackground(new Color(240, 240, 240));
-		lblNomeEmpresa.setBounds(167, 48, 98, 49);
+		lblNomeEmpresa.setBounds(187, 50, 98, 49);
 		painelLogin.add(lblNomeEmpresa);
 
 		JLabel lblEmail = new JLabel("E-Mail");
@@ -96,7 +96,7 @@ public class TelaLogin extends JFrame {
 
 			}
 		});
-		btnEntrar.setBounds(46, 371, 104, 28);
+		btnEntrar.setBounds(322, 362, 104, 28);
 		painelLogin.add(btnEntrar);
 
 		JButton btnCadastrar = new JButton("Cadastrar");
@@ -113,10 +113,10 @@ public class TelaLogin extends JFrame {
 		});
 
 		JLabel lblNewLabel = new JLabel("Cadastre-se aqui");
-		lblNewLabel.setBounds(322, 332, 104, 28);
+		lblNewLabel.setBounds(52, 323, 104, 28);
 		painelLogin.add(lblNewLabel);
 
-		btnCadastrar.setBounds(322, 371, 104, 28);
+		btnCadastrar.setBounds(52, 362, 104, 28);
 		painelLogin.add(btnCadastrar);
 
 		setVisible(true);

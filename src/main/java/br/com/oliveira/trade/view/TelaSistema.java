@@ -24,14 +24,14 @@ public class TelaSistema extends JFrame {
 	public TelaSistema() {
 		setTitle("Oliveira Trade");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 532, 484);
+		setBounds(100, 100, 580, 546);
 		painelPrincipal = new JPanel();
 		painelPrincipal.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(painelPrincipal);
 		painelPrincipal.setLayout(null);
 
 		JLabel lblSistema = new JLabel("Sistema Oliveira Trade");
-		lblSistema.setBounds(150, 81, 157, 98);
+		lblSistema.setBounds(199, 84, 157, 98);
 		painelPrincipal.add(lblSistema);
 
 		JButton btnSair = new JButton("Sair");
