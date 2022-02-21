@@ -33,8 +33,9 @@ public class TelaLogin extends JFrame {
 	private JPasswordField campoSenha;
 
 	public TelaLogin() {
+		setTitle("Oliveira Trade");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 512, 506);
+		setBounds(100, 100, 562, 579);
 		painelLogin = new JPanel();
 		painelLogin.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(painelLogin);
@@ -95,7 +96,7 @@ public class TelaLogin extends JFrame {
 
 			}
 		});
-		btnEntrar.setBounds(40, 371, 104, 28);
+		btnEntrar.setBounds(46, 371, 104, 28);
 		painelLogin.add(btnEntrar);
 
 		JButton btnCadastrar = new JButton("Cadastrar");

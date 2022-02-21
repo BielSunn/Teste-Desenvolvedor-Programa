@@ -50,6 +50,7 @@ public class TelaCadastro extends JFrame {
 	private JTextField txtTelefone;
 
 	public TelaCadastro() {
+		setTitle("Oliveira Trade");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 626, 671);
 		painelCadastro = new JPanel();
@@ -184,13 +185,12 @@ public class TelaCadastro extends JFrame {
 					} catch (DateTimeParseException erroData) {
 						JOptionPane.showMessageDialog(null, "Digite uma data válida: " + erroData.getMessage(),
 								"Erro ao cadastrar", JOptionPane.ERROR_MESSAGE);
-
 					}
 				}
 
 			}
 		});
-		btnCadastro.setBounds(10, 367, 122, 34);
+		btnCadastro.setBounds(413, 388, 122, 34);
 		painelDadosPessoais.add(btnCadastro);
 
 		setVisible(true);
@@ -295,6 +295,17 @@ public class TelaCadastro extends JFrame {
 		txtTelefone.setColumns(10);
 		txtTelefone.setBounds(10, 178, 180, 26);
 		painelDadosPessoais.add(txtTelefone);
+		
+		JButton btnVoltar = new JButton("Voltar");
+		btnVoltar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				new TelaLogin();
+				dispose();
+			
+			}
+		});
+		btnVoltar.setBounds(34, 388, 122, 34);
+		painelDadosPessoais.add(btnVoltar);
 
 		return painelDadosPessoais;
 	}
