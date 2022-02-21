@@ -1,6 +1,14 @@
 # Teste-Desenvolvedor-Programa
 Programa relacionado ao teste do Programa Best Minds 2022 - Pessoa Desenvolvedora Trainee
 <hr>
+<h1> ATENÇÃO !!!!</h1>
+  <h3>Siga as instruções para que o projeto possa funcionar sem erros.</h3>
+  <p>Ao abrir clique com o botão direito do mouse no projeto -> Maven -> Uptade Project. Após isso clique em OK, na janela que irá abrir</p>
+  <p align="center">
+    <img width="400" src="imgs/read_me/Uptade_Maven.png">
+    <img width="400" src="imgs/read_me/Uptade_Maven2.png">
+</p>
+<hr>
 
 <p>Foi desenvolvido projeto em que, o usuário pode se cadastrar e ter seu cadastro salvo no banco de dados. Também pode realizar o login, com e-mail e senha, para acessar o sistema Oliveira Trade.</p>
 <a href="https://bielsunn.github.io/Teste-Desenvolvedor-Programa/">Documentação Javadoc</a>
