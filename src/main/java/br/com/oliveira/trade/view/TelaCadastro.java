@@ -179,11 +179,11 @@ public class TelaCadastro extends JFrame {
 						e1.printStackTrace();
 					} catch (NumberFormatException erroNumber) {
 						JOptionPane.showMessageDialog(null,
-								"Digite somente números no telefone: " + erroNumber.getMessage(), "Erro ao cadastrar",
+								"Digite somente números no telefone", "Erro ao cadastrar",
 								JOptionPane.ERROR_MESSAGE);
 						erroNumber.printStackTrace();
 					} catch (DateTimeParseException erroData) {
-						JOptionPane.showMessageDialog(null, "Digite uma data válida: " + erroData.getMessage(),
+						JOptionPane.showMessageDialog(null, "Digite uma data válida",
 								"Erro ao cadastrar", JOptionPane.ERROR_MESSAGE);
 					}
 				}
