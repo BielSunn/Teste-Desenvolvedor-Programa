@@ -12,7 +12,8 @@ import br.com.oliveira.trade.view.TelaLogin;
 public class OliveiraTrade {
 
 	public static void main(String[] args) {
-
+		
+		
 		new TelaLogin();
 
 	}
