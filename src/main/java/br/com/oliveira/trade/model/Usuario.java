@@ -3,7 +3,7 @@ package br.com.oliveira.trade.model;
 import java.time.LocalDate;
 
 public class Usuario {
-	private Long id;
+	private int id;
 	private String nome;
 	private LocalDate dataDeNascimento;
 	private String cpf;
@@ -11,12 +11,17 @@ public class Usuario {
 	private String email;
 	private String senha;
 	private int numeroTelefone;
+	private String estado;
+	private String cidade;
+	private String bairro;
+	private String cep;
+	private String logradouro;
 
 	public Usuario() {
 	}
 
 	public Usuario(String nome, LocalDate dataDeNascimento, String cpf, String sexo, String email, String senha,
-			int numeroTelefone) {
+			int numeroTelefone, String estado, String cidade, String bairro, String cep, String logradouro) {
 		super();
 		this.nome = nome;
 		this.dataDeNascimento = dataDeNascimento;
@@ -25,6 +30,11 @@ public class Usuario {
 		this.email = email;
 		this.senha = senha;
 		this.numeroTelefone = numeroTelefone;
+		this.estado = estado;
+		this.cidade = cidade;
+		this.bairro = bairro;
+		this.cep = cep;
+		this.logradouro = logradouro;
 	}
 
 	public Usuario(String email, String senha) {
@@ -33,11 +43,11 @@ public class Usuario {
 		this.senha = senha;
 	}
 
-	public Long getId() {
+	public int getId() {
 		return id;
 	}
 
-	public void setId(Long id) {
+	public void setId(int id) {
 		this.id = id;
 	}
 
@@ -97,10 +107,52 @@ public class Usuario {
 		this.numeroTelefone = numeroTelefone;
 	}
 
+	public String getEstado() {
+		return estado;
+	}
+
+	public void setEstado(String estado) {
+		this.estado = estado;
+	}
+
+	public String getCidade() {
+		return cidade;
+	}
+
+	public void setCidade(String cidade) {
+		this.cidade = cidade;
+	}
+
+	public String getBairro() {
+		return bairro;
+	}
+
+	public void setBairro(String bairro) {
+		this.bairro = bairro;
+	}
+
+	public String getCep() {
+		return cep;
+	}
+
+	public void setCep(String cep) {
+		this.cep = cep;
+	}
+
+	public String getLogradouro() {
+		return logradouro;
+	}
+
+	public void setLogradouro(String logradouro) {
+		this.logradouro = logradouro;
+	}
+
 	@Override
 	public String toString() {
-		return "Usuario [idUsuario=" + id + ", nome=" + nome + ", dataDeNascimento=" + dataDeNascimento + ", cpf=" + cpf
+		return "Usuario [id=" + id + ", nome=" + nome + ", dataDeNascimento=" + dataDeNascimento + ", cpf=" + cpf
 				+ ", sexo=" + sexo + ", email=" + email + ", senha=" + senha + ", numeroTelefone=" + numeroTelefone
-				+ "]";
+				+ ", estado=" + estado + ", cidade=" + cidade + ", bairro=" + bairro + ", cep=" + cep + ", logradouro="
+				+ logradouro + "]";
 	}
+
 }

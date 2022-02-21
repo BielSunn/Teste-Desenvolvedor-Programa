@@ -20,6 +20,8 @@ import br.com.oliveira.trade.model.Usuario;
 
 public class TelaLogin extends JFrame {
 
+	private static final long serialVersionUID = 1L;
+
 	private JPanel painelLogin;
 	private JTextField txtEmail;
 	private JPasswordField campoSenha;
@@ -40,9 +42,6 @@ public class TelaLogin extends JFrame {
 		});
 	}
 
-	/**
-	 * Create the frame.
-	 */
 	public TelaLogin() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 512, 506);
@@ -77,16 +76,22 @@ public class TelaLogin extends JFrame {
 		btnEntrar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 
-				Usuario usuario = new Usuario(txtEmail.getText(), new String(campoSenha.getPassword()));
+				Usuario usuario = new Usuario(
+						txtEmail.getText(), 
+						new String(campoSenha.getPassword())
+						);
 
 				UsuarioController usuarioController = new UsuarioController();
 
 				try {
 					if (usuarioController.verificarLogin(usuario)) {
 						JOptionPane.showMessageDialog(null, "Login realizado");
-					} else 
-						JOptionPane.showMessageDialog(null, "Email e/ou Senha inválido(s)",
-							"Erro de login", JOptionPane.ERROR_MESSAGE);
+						new TelaSistema();
+						dispose(); // fecha a tela de login
+
+					} else
+						JOptionPane.showMessageDialog(null, "Email e/ou Senha inválido(s)", "Erro de login",
+								JOptionPane.ERROR_MESSAGE);
 				} catch (SQLException e1) {
 					// TODO Auto-generated catch block
 					e1.printStackTrace();
@@ -94,24 +99,24 @@ public class TelaLogin extends JFrame {
 
 			}
 		});
-		btnEntrar.setBounds(52, 341, 104, 28);
+		btnEntrar.setBounds(40, 371, 104, 28);
 		painelLogin.add(btnEntrar);
 
 		JButton btnCadastrar = new JButton("Cadastrar");
 		btnCadastrar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				dispose(); // fecha a tela de login
 				new TelaCadastro();
-				//setVisible(false);
+				dispose(); // fecha a tela de login
+				// setVisible(false);
 
 			}
 		});
-		btnCadastrar.setBounds(322, 371, 104, 28);
-		painelLogin.add(btnCadastrar);
 
 		JLabel lblNewLabel = new JLabel("Cadastre-se aqui");
-		lblNewLabel.setBounds(326, 325, 104, 28);
+		lblNewLabel.setBounds(322, 332, 104, 28);
 		painelLogin.add(lblNewLabel);
 
+		btnCadastrar.setBounds(322, 371, 104, 28);
+		painelLogin.add(btnCadastrar);
 	}
 }

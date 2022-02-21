@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 
 import br.com.oliveira.trade.factory.ConnectionFactory;
 import br.com.oliveira.trade.model.Usuario;
@@ -18,15 +19,19 @@ public class UsuarioDao {
 
 	public int cadastrar(Usuario usuario) throws SQLException {
 
-		String sql = "INSERT INTO T_OT_USUARIO (nm_usuario, dt_nascimento, nr_cpf, tp_sexo, ds_email, ds_senha, nr_telefone) VALUES"
-				+ "(?, ?, ?, ?, ?, ?, ?)";
-		/*
-		 * INSERT INTO T_OT_USUARIO (id_usuario, nm_usuario, dt_nascimento, nr_cpf,
-		 * tp_sexo, ds_email, ds_senha, nr_telefone) VALUES" + "(DEFAULT, ?, ?, ?, ?, ?,
-		 * ?, ?)
-		 */
+		String sql = "INSERT INTO T_OT_USUARIO (nm_usuario, dt_nascimento, nr_cpf, tp_sexo, ds_email, ds_senha, "
+				+ "nr_telefone, nm_estado, nm_cidade, nm_bairro, nr_cep, ds_logradouro) VALUES"
+				+ "(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
-		PreparedStatement ps = conn.prepareStatement(sql);
+		PreparedStatement ps = conn.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
+
+//		ps.setString(1, usuario.getNome());
+//		ps.setObject(2, usuario.getDataDeNascimento());
+//		ps.setString(3, usuario.getCpf());
+//		ps.setString(4, usuario.getSexo());
+//		ps.setString(5, usuario.getEmail());
+//		ps.setString(6, usuario.getSenha());
+//		ps.setInt(7, usuario.getNumeroTelefone());
 
 		ps.setString(1, usuario.getNome());
 		ps.setObject(2, usuario.getDataDeNascimento());
@@ -35,9 +40,25 @@ public class UsuarioDao {
 		ps.setString(5, usuario.getEmail());
 		ps.setString(6, usuario.getSenha());
 		ps.setInt(7, usuario.getNumeroTelefone());
-		// ps.setObject(0, usuario.getEndereco());
+		ps.setString(8, usuario.getEstado());
+		ps.setString(9, usuario.getCidade());
+		ps.setString(10, usuario.getBairro());
+		ps.setString(11, usuario.getCep());
+		ps.setString(12, usuario.getLogradouro());
 
-		return ps.executeUpdate();
+		int executeUpdate = ps.executeUpdate();
+
+//		ResultSet rs = ps.getGeneratedKeys();
+//		int id = 0;
+//		if (rs.next()) {
+//			id = rs.getInt("id_usuario");
+//		}
+//		usuario.setId(id);
+//		System.out.println("ID: " + usuario.getId());
+//
+//		ps.setLong(id, usuario.getId());
+
+		return executeUpdate;
 
 	}
 

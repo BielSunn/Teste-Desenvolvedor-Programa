@@ -26,9 +26,7 @@ import javax.swing.border.EtchedBorder;
 import javax.swing.border.TitledBorder;
 import javax.swing.text.MaskFormatter;
 
-import br.com.oliveira.trade.controller.EnderecoController;
 import br.com.oliveira.trade.controller.UsuarioController;
-import br.com.oliveira.trade.model.Endereco;
 import br.com.oliveira.trade.model.Usuario;
 
 public class TelaCadastro extends JFrame {
@@ -47,8 +45,6 @@ public class TelaCadastro extends JFrame {
 	private JTextField txtBairro;
 	private ButtonGroup tipoSexo = new ButtonGroup();
 	private JTextField txtTelefone;
-	private JTextField txtCep;
-
 
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
@@ -62,7 +58,6 @@ public class TelaCadastro extends JFrame {
 			}
 		});
 	}
-
 
 	public TelaCadastro() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -83,13 +78,12 @@ public class TelaCadastro extends JFrame {
 //			mascaraTelefone = new MaskFormatter("(##)####-####");
 			mascaraCpf = new MaskFormatter("###.###.###-##");
 			mascaraData = new MaskFormatter("##/##/####");
-//			mascaraCep.setPlaceholderCharacter('_');
+			mascaraCep.setPlaceholderCharacter('_');
 //			mascaraTelefone.setPlaceholderCharacter('_');
 			mascaraCpf.setPlaceholderCharacter('_');
 			mascaraData.setPlaceholderCharacter('_');
 		} catch (ParseException excp) {
 			System.err.println("Erro na formatação: " + excp.getMessage());
-			// System.exit(-1);
 		}
 
 		painelDadosLogin();
@@ -133,12 +127,17 @@ public class TelaCadastro extends JFrame {
 		JLabel lblCep = new JLabel("CEP");
 		lblCep.setBounds(10, 283, 90, 20);
 		painelDadosPessoais.add(lblCep);
-		
+
 		final JFormattedTextField campoCepFormatado = new JFormattedTextField(mascaraCep);
 		campoCepFormatado.setBounds(10, 314, 180, 26);
 		painelDadosPessoais.add(campoCepFormatado);
 
-		JButton btnCadastro = new JButton("Cadastrar");
+		final JButton btnTeste = new JButton("TESTE");
+		btnTeste.setBounds(295, 391, 122, 34);
+		painelDadosPessoais.add(btnTeste);
+		btnTeste.setEnabled(false);
+
+		final JButton btnCadastro = new JButton("Cadastrar");
 
 		btnCadastro.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -159,18 +158,6 @@ public class TelaCadastro extends JFrame {
 							JOptionPane.ERROR_MESSAGE);
 				} else {
 
-					// inserindo dados de endereco pelo construtor
-					Endereco endereco = new Endereco(
-							String.valueOf(comboBoxEstados.getSelectedItem()),
-							txtCidade.getText(), 
-							txtBairro.getText(), 
-							//Integer.parseInt(txtCep.getText()),
-							campoCepFormatado.getText(),
-							txtLogradouro.getText()
-							);
-
-					// inserindo dados de usuario pelo setter
-
 					String dataNascimento = formattedTxtDataNascimento.getText();
 					DateTimeFormatter dataFormada = DateTimeFormatter.ofPattern("dd/MM/yyyy");
 					LocalDate dataFormatada = LocalDate.parse(dataNascimento, dataFormada);
@@ -181,34 +168,41 @@ public class TelaCadastro extends JFrame {
 							campoCpf.getText(),
 							tipoSexo.getSelection().getActionCommand(), 
 							txtEmail.getText(),
-							new String(campoSenha.getPassword()), 
-							Integer.parseInt(txtTelefone.getText())
+							new String(campoSenha.getPassword()),
+							Integer.parseInt(txtTelefone.getText()),
+							String.valueOf(comboBoxEstados.getSelectedItem()), 
+							txtCidade.getText(), 
+							txtBairro.getText(),
+							campoCepFormatado.getText(), 
+							txtLogradouro.getText()
 							);
-					
-
-					System.out.println(usuario.toString());
-					System.out.println(tipoSexo.getSelection().getActionCommand());
-					System.out.println(endereco);
-					System.out.println(comboBoxEstados.getSelectedItem());
 
 					UsuarioController usuarioController = new UsuarioController();
-					EnderecoController enderecoController = new EnderecoController();
+					System.out.println("user antes cadastro: " + usuario.toString());
 
 					try {
 						usuarioController.cadastrar(usuario);
-						enderecoController.cadastrar(endereco);
+						System.out.println("user apos cadastro: " + usuario.toString());
+
 						JOptionPane.showMessageDialog(null,
 								"Usuário " + txtNome.getText() + " foi cadastrado com sucesso");
+
+						btnTeste.setEnabled(true);
+						btnCadastro.setEnabled(false);
+
 					} catch (SQLException e1) {
 						JOptionPane.showMessageDialog(null, "Erro SQL: " + e1.getMessage(), "Erro ao cadastrar",
 								JOptionPane.ERROR_MESSAGE);
 						e1.printStackTrace();
-					} catch (NullPointerException erroNumber) {
-						JOptionPane.showMessageDialog(null, "Erro String " + erroNumber.getMessage(),
-								"Erro ao cadastrar", JOptionPane.ERROR_MESSAGE);
+					} catch (NumberFormatException erroNumber) {
+						JOptionPane.showMessageDialog(null,
+								"Digite somente números no telefone " + erroNumber.getMessage(), "Erro ao cadastrar",
+								JOptionPane.ERROR_MESSAGE);
+						erroNumber.printStackTrace();
 					} catch (DateTimeParseException erroData) {
 						JOptionPane.showMessageDialog(null, "Digite uma data válida: " + erroData.getMessage(),
 								"Erro ao cadastrar", JOptionPane.ERROR_MESSAGE);
+
 					}
 				}
 
@@ -216,6 +210,7 @@ public class TelaCadastro extends JFrame {
 		});
 		btnCadastro.setBounds(10, 367, 122, 34);
 		painelDadosPessoais.add(btnCadastro);
+
 	}
 
 	private void painelDadosLogin() {
@@ -316,12 +311,6 @@ public class TelaCadastro extends JFrame {
 		txtTelefone.setColumns(10);
 		txtTelefone.setBounds(10, 178, 180, 26);
 		painelDadosPessoais.add(txtTelefone);
-
-//		txtCep = new JTextField();
-//		txtCep.setColumns(10);
-//		txtCep.setBounds(315, 412, 180, 26);
-//		painelDadosPessoais.add(txtCep);
-		
 
 		return painelDadosPessoais;
 	}
