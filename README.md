@@ -3,6 +3,7 @@ Programa relacionado ao teste do Programa Best Minds 2022 - Pessoa Desenvolvedor
 <hr>
 
 <p>Foi desenvolvido projeto em que, o usuário pode se cadastrar e ter seu cadastro salvo no banco de dados. Também pode realizar o login, com e-mail e senha, para acessar o sistema Oliveira Trade.</p>
+<a href="https://bielsunn.github.io/Teste-Desenvolvedor-Programa/">Documentação Javadoc</a>
 
 <h2>Ferramentas utilizadas:</h2>
 <ul>
