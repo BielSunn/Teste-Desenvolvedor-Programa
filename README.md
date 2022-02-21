@@ -26,14 +26,12 @@ Programa relacionado ao teste do Programa Best Minds 2022 - Pessoa Desenvolvedor
 <h3>TelaLogin</h3>
 <p>Login para acessar o sistema, o usuário deve informar o e-mail e senha.</p>
 <p>Caso o e-mail e senha existam no sistema, será redirecionado para o sistema Oliveira Trade. Caso contrário ou tenha ocorrido algum erro de digitação, será informado uma mensagem de erro.</p>
-
 <p align="center">
     <img width="370" src="imgs/read_me/TelaLogin.png">
     <img width="370" src="imgs/read_me/TelaLogin_sucesso.png">
     <img width="370" src="imgs/read_me/TelaLogin_erro.png">
 </p>  
 <hr>
-
 
 <h3>TelaCadastro</h3>
 <p>Para ser feito o cadastro, o usuário deve preencher todos os campos. Após serem preenchidos será retornado que o cadastro foi realizado.</p>
