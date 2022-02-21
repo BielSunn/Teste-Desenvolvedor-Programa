@@ -23,6 +23,11 @@ Programa relacionado ao teste do Programa Best Minds 2022 - Pessoa Desenvolvedor
 <hr>
 
 <h2>Funcionalidades das Classes</h2>
+
+<h3>OliveiraTrade</h3>
+<p>Classe de Execução do Sistema</p>
+<hr>
+
 <h3>TelaLogin</h3>
 <p>Login para acessar o sistema, o usuário deve informar o e-mail e senha.</p>
 <p>Caso o e-mail e senha existam no sistema, será redirecionado para o sistema Oliveira Trade. Caso contrário ou tenha ocorrido algum erro de digitação, será informado uma mensagem de erro.</p>
