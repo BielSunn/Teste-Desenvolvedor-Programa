@@ -5,6 +5,13 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
+/**
+ * Classe correspondente a Tela de Acesso Sistema
+ * 
+ * @author Gabriel Sun
+ *
+ */
+
 public class TelaSistema extends JFrame {
 
 	private static final long serialVersionUID = 1L;

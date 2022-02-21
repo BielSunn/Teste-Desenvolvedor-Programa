@@ -1,7 +1,6 @@
 package br.com.oliveira.trade.view;
 
 import java.awt.Color;
-import java.awt.EventQueue;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.sql.SQLException;
@@ -29,11 +28,15 @@ import javax.swing.text.MaskFormatter;
 import br.com.oliveira.trade.controller.UsuarioController;
 import br.com.oliveira.trade.model.Usuario;
 
+/**
+ * Classe correspondente a Tela de Cadastro do Sistema
+ * 
+ * @author Gabriel Sun
+ *
+ */
+
 public class TelaCadastro extends JFrame {
 
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 1L;
 
 	private JPanel painelCadastro;
@@ -46,19 +49,6 @@ public class TelaCadastro extends JFrame {
 	private ButtonGroup tipoSexo = new ButtonGroup();
 	private JTextField txtTelefone;
 
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					TelaCadastro frame = new TelaCadastro();
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
-
 	public TelaCadastro() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 626, 671);
@@ -69,17 +59,14 @@ public class TelaCadastro extends JFrame {
 
 		// Define as máscaras
 		MaskFormatter mascaraCep = null;
-//		MaskFormatter mascaraTelefone = null;
 		MaskFormatter mascaraCpf = null;
 		MaskFormatter mascaraData = null;
 
 		try {
 			mascaraCep = new MaskFormatter("#####-###");
-//			mascaraTelefone = new MaskFormatter("(##)####-####");
 			mascaraCpf = new MaskFormatter("###.###.###-##");
 			mascaraData = new MaskFormatter("##/##/####");
 			mascaraCep.setPlaceholderCharacter('_');
-//			mascaraTelefone.setPlaceholderCharacter('_');
 			mascaraCpf.setPlaceholderCharacter('_');
 			mascaraData.setPlaceholderCharacter('_');
 		} catch (ParseException excp) {
@@ -90,10 +77,6 @@ public class TelaCadastro extends JFrame {
 
 		// painel dados pessoais
 		JPanel painelDadosPessoais = painelDadosPessoal();
-
-//		final JFormattedTextField campoTelefone = new JFormattedTextField();
-//		campoTelefone.setBounds(10, 397, 180, 26);
-//		painelDadosPessoais.add(campoTelefone);
 
 		JLabel lblCpf = new JLabel("CPF");
 		lblCpf.setBounds(10, 79, 90, 20);
@@ -132,14 +115,14 @@ public class TelaCadastro extends JFrame {
 		campoCepFormatado.setBounds(10, 314, 180, 26);
 		painelDadosPessoais.add(campoCepFormatado);
 
-		final JButton btnTeste = new JButton("TESTE");
-		btnTeste.setBounds(295, 391, 122, 34);
-		painelDadosPessoais.add(btnTeste);
-		btnTeste.setEnabled(false);
-
 		final JButton btnCadastro = new JButton("Cadastrar");
 
 		btnCadastro.addActionListener(new ActionListener() {
+
+			/**
+			 * Botão "Cadastrar" : realiza o cadastro do usuário no sistema, caso todos os
+			 * campos estejam preenchidos
+			 */
 			public void actionPerformed(ActionEvent e) {
 
 				if (txtNome.getText().equals("") 
@@ -166,14 +149,14 @@ public class TelaCadastro extends JFrame {
 							txtNome.getText(), 
 							dataFormatada, 
 							campoCpf.getText(),
-							tipoSexo.getSelection().getActionCommand(), 
+							tipoSexo.getSelection().getActionCommand(),
 							txtEmail.getText(),
 							new String(campoSenha.getPassword()),
 							Integer.parseInt(txtTelefone.getText()),
-							String.valueOf(comboBoxEstados.getSelectedItem()), 
-							txtCidade.getText(), 
+							String.valueOf(comboBoxEstados.getSelectedItem()),
+							txtCidade.getText(),
 							txtBairro.getText(),
-							campoCepFormatado.getText(), 
+							campoCepFormatado.getText(),
 							txtLogradouro.getText()
 							);
 
@@ -186,9 +169,8 @@ public class TelaCadastro extends JFrame {
 
 						JOptionPane.showMessageDialog(null,
 								"Usuário " + txtNome.getText() + " foi cadastrado com sucesso");
-
-						btnTeste.setEnabled(true);
-						btnCadastro.setEnabled(false);
+						new TelaLogin();
+						dispose();
 
 					} catch (SQLException e1) {
 						JOptionPane.showMessageDialog(null, "Erro SQL: " + e1.getMessage(), "Erro ao cadastrar",
@@ -210,6 +192,8 @@ public class TelaCadastro extends JFrame {
 		});
 		btnCadastro.setBounds(10, 367, 122, 34);
 		painelDadosPessoais.add(btnCadastro);
+
+		setVisible(true);
 
 	}
 

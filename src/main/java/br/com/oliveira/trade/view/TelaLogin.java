@@ -1,7 +1,6 @@
 package br.com.oliveira.trade.view;
 
 import java.awt.Color;
-import java.awt.EventQueue;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.sql.SQLException;
@@ -18,6 +17,13 @@ import javax.swing.border.EmptyBorder;
 import br.com.oliveira.trade.controller.UsuarioController;
 import br.com.oliveira.trade.model.Usuario;
 
+/**
+ * Classe correspondente a Tela de Login do Sistema
+ * 
+ * @author Gabriel Sun
+ *
+ */
+
 public class TelaLogin extends JFrame {
 
 	private static final long serialVersionUID = 1L;
@@ -25,22 +31,6 @@ public class TelaLogin extends JFrame {
 	private JPanel painelLogin;
 	private JTextField txtEmail;
 	private JPasswordField campoSenha;
-
-	/**
-	 * Launch the application.
-	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					TelaLogin frame = new TelaLogin();
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
 
 	public TelaLogin() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -73,6 +63,12 @@ public class TelaLogin extends JFrame {
 		painelLogin.add(campoSenha);
 
 		JButton btnEntrar = new JButton("Entrar");
+
+		/**
+		 * Ao clicar no botao "Entrar", será verificado se existe o email e senha. Caso
+		 * sim será redirecionado para a tela do sistema Caso não exista ou foi
+		 * informado algum dado incorreto será mostrado uma mensagem de erro
+		 */
 		btnEntrar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 
@@ -103,11 +99,14 @@ public class TelaLogin extends JFrame {
 		painelLogin.add(btnEntrar);
 
 		JButton btnCadastrar = new JButton("Cadastrar");
+
+		/**
+		 * Ao clicar no Botão "Cadastrar" será redirecionado para a tela de Cadastro
+		 */
 		btnCadastrar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				new TelaCadastro();
 				dispose(); // fecha a tela de login
-				// setVisible(false);
 
 			}
 		});
@@ -118,5 +117,7 @@ public class TelaLogin extends JFrame {
 
 		btnCadastrar.setBounds(322, 371, 104, 28);
 		painelLogin.add(btnCadastrar);
+
+		setVisible(true);
 	}
 }

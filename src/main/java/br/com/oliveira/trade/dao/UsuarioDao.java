@@ -9,6 +9,14 @@ import java.sql.Statement;
 import br.com.oliveira.trade.factory.ConnectionFactory;
 import br.com.oliveira.trade.model.Usuario;
 
+/**
+ * Classe utilizada para interagir com banco de dados, realizando insert e
+ * select no mesmo.
+ * 
+ * @author Gabriel Sun
+ *
+ */
+
 public class UsuarioDao {
 
 	private Connection conn = null;
@@ -17,6 +25,15 @@ public class UsuarioDao {
 		conn = ConnectionFactory.getConnection();
 	}
 
+	/**
+	 * Método que irá cadastrar o usuário no sistema
+	 * 
+	 * @param usuario -> objeto usuário que recebe os atributos para o cadastro
+	 * @return -> quantidade de linhas alteradas no banco, sendo 1 caso o cadastro
+	 *         for realizado com sucesso
+	 * @throws SQLException -> caso ocorra algum erro SQL
+	 */
+
 	public int cadastrar(Usuario usuario) throws SQLException {
 
 		String sql = "INSERT INTO T_OT_USUARIO (nm_usuario, dt_nascimento, nr_cpf, tp_sexo, ds_email, ds_senha, "
@@ -24,14 +41,6 @@ public class UsuarioDao {
 				+ "(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
 		PreparedStatement ps = conn.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
-
-//		ps.setString(1, usuario.getNome());
-//		ps.setObject(2, usuario.getDataDeNascimento());
-//		ps.setString(3, usuario.getCpf());
-//		ps.setString(4, usuario.getSexo());
-//		ps.setString(5, usuario.getEmail());
-//		ps.setString(6, usuario.getSenha());
-//		ps.setInt(7, usuario.getNumeroTelefone());
 
 		ps.setString(1, usuario.getNome());
 		ps.setObject(2, usuario.getDataDeNascimento());
@@ -46,21 +55,19 @@ public class UsuarioDao {
 		ps.setString(11, usuario.getCep());
 		ps.setString(12, usuario.getLogradouro());
 
-		int executeUpdate = ps.executeUpdate();
-
-//		ResultSet rs = ps.getGeneratedKeys();
-//		int id = 0;
-//		if (rs.next()) {
-//			id = rs.getInt("id_usuario");
-//		}
-//		usuario.setId(id);
-//		System.out.println("ID: " + usuario.getId());
-//
-//		ps.setLong(id, usuario.getId());
-
-		return executeUpdate;
+		return ps.executeUpdate();
 
 	}
+
+	/**
+	 * Método que irá verificar se o usuário possui um login no sistema, através de
+	 * um Select no banco de dados que verifica pelo email e senha informado na tela
+	 * de login.
+	 * 
+	 * @param usuario -> objeto usuario que recebe o email e senha
+	 * @return -> se existe o login informado no sistema
+	 * @throws SQLException -> caso ocorra algum erro SQL
+	 */
 
 	public boolean verificarLogin(Usuario usuario) throws SQLException {
 
@@ -78,7 +85,7 @@ public class UsuarioDao {
 			checkLogin = true;
 		}
 
-		System.out.println("login: " + checkLogin);
+//		System.out.println("login: " + checkLogin);
 		return checkLogin;
 	}
 

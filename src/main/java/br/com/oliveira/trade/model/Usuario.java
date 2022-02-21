@@ -2,6 +2,13 @@ package br.com.oliveira.trade.model;
 
 import java.time.LocalDate;
 
+/**
+ * Classe Modelo de usuário
+ * 
+ * @author Gabriel Sun
+ *
+ */
+
 public class Usuario {
 	private int id;
 	private String nome;
@@ -20,6 +27,23 @@ public class Usuario {
 	public Usuario() {
 	}
 
+	/**
+	 * Construtor utilizado para realizar o cadastro do usuário
+	 * 
+	 * @param nome             -> nome do usuário
+	 * @param dataDeNascimento -> data de nascimento
+	 * @param cpf              -> cpf
+	 * @param sexo             -> sexo (Masculino ou Feminino)
+	 * @param email            -> email
+	 * @param senha            -> senha
+	 * @param numeroTelefone   -> número de telefone
+	 * @param estado           -> Estado
+	 * @param cidade           -> Cidade
+	 * @param bairro           -> Bairro
+	 * @param cep              -> Cep
+	 * @param logradouro       -> Logradouro
+	 */
+
 	public Usuario(String nome, LocalDate dataDeNascimento, String cpf, String sexo, String email, String senha,
 			int numeroTelefone, String estado, String cidade, String bairro, String cep, String logradouro) {
 		super();
@@ -36,6 +60,14 @@ public class Usuario {
 		this.cep = cep;
 		this.logradouro = logradouro;
 	}
+
+	/**
+	 * Construtor utilizado para verificação do login no sistema com o email e
+	 * senha.
+	 * 
+	 * @param email -> utilizado no cadastro do usuário
+	 * @param senha -> utilizado no cadastro do usuário
+	 */
 
 	public Usuario(String email, String senha) {
 		super();
