@@ -2,7 +2,7 @@
 Programa relacionado ao teste do Programa Best Minds 2022 - Pessoa Desenvolvedora Trainee
 <hr>
 
-<p>Foi desenvolvido projeto no qual, o usuário pode se cadastrar e ter seu cadastro salvo no banco de dados. Também pode realizar o login, com e-mail e senha, para acessar o sistema Oliveira Trade.</p>
+<p>Foi desenvolvido projeto em que, o usuário pode se cadastrar e ter seu cadastro salvo no banco de dados. Também pode realizar o login, com e-mail e senha, para acessar o sistema Oliveira Trade.</p>
 
 <h2>Ferramentas utilizadas:</h2>
 <ul>
@@ -19,9 +19,9 @@ Programa relacionado ao teste do Programa Best Minds 2022 - Pessoa Desenvolvedor
 <p>Caso o e-mail e senha existam no sistema, será redirecionado para o sistema Oliveira Trade. Caso contrário ou tenha ocorrido algum erro de digitação, será informado uma mensagem de erro.</p>
 
 <p align="center">
-    <img width="400" src="imgs/read_me/TelaLogin.png">
-    <img width="400" src="imgs/read_me/TelaLogin_sucesso.png">
-    <img width="400" src="imgs/read_me/TelaLogin_erro.png">
+    <img width="370" src="imgs/read_me/TelaLogin.png">
+    <img width="370" src="imgs/read_me/TelaLogin_sucesso.png">
+    <img width="370" src="imgs/read_me/TelaLogin_erro.png">
 </p>  
 <hr>
 
@@ -33,6 +33,15 @@ Programa relacionado ao teste do Programa Best Minds 2022 - Pessoa Desenvolvedor
     <img width="400" src="imgs/read_me/TelaCadastro_sucesso.png">
     <img width="400" src="imgs/read_me/TelaCadastro_erro.png">
 </p>  
+<hr>
+
+<h3>TelaSistemao</h3>
+<p>Tela principal do Sistema, que só poderá ser acessada após o usuário realizar o login.</p>
+<p align="center">
+    <img width="350" src="imgs/read_me/TelaSistema.png">
+</p> 
+
+
 
 
 
