@@ -35,7 +35,7 @@ Programa relacionado ao teste do Programa Best Minds 2022 - Pessoa Desenvolvedor
 </p>  
 <hr>
 
-<h3>TelaSistemao</h3>
+<h3>TelaSistema</h3>
 <p>Tela principal do Sistema, que só poderá ser acessada após o usuário realizar o login.</p>
 <p align="center">
     <img width="350" src="imgs/read_me/TelaSistema.png">
