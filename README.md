@@ -1,26 +1,25 @@
 # Teste-Desenvolvedor-Programa
 Programa relacionado ao teste do Programa Best Minds 2022 - Pessoa Desenvolvedora Trainee
-<hr>
-<h1> ATENÇÃO !!!!</h1>
-  <h3>Siga as instruções para que o projeto possa funcionar sem erros.</h3>
-  <p>Ao abrir clique com o botão direito do mouse no projeto -> Maven -> Uptade Project. Após isso clique em OK, na janela que irá abrir</p>
-  <p align="center">
-    <img width="400" src="imgs/read_me/Uptade_Maven.png">
-    <img width="400" src="imgs/read_me/Uptade_Maven2.png">
-</p>
-<hr>
+---------------------------------------------------------------------------------------------------------------------------------------------------- 
 
-<p>Foi desenvolvido projeto em que, o usuário pode se cadastrar e ter seu cadastro salvo no banco de dados. Também pode realizar o login, com e-mail e senha, para acessar o sistema Oliveira Trade.</p>
-<a href="https://bielsunn.github.io/Teste-Desenvolvedor-Programa/">Documentação Javadoc</a>
+# Solução
+- Foi desenvolvido projeto em que, o usuário pode se cadastrar e ter seu cadastro salvo no banco de dados. Também pode realizar o login, com e-mail e senha, para acessar o sistema Oliveira Trade.
 
-<h2>Ferramentas utilizadas:</h2>
-<ul>
-  <li>IDE: <b>Eclipse</b></li>
-  <li>Linguagem: <b>Java</b></li>
-  <li>SGBD(Sistema de gerenciamento de banco de dados): <b>PostgreSQL</b></li>
-  <li>Para criação da interface gráfica do projeto, foi utilizado o plugin <b>WindowBuilder</b> do Eclipse.</li>
-</ul>
-<hr>
+## Como iniciar
+- Ao abrir o Visual Studio ir na aba Tools -> NuGet Package Manager -> Package Manager Console
+- Ao abrir o console digitar: "update-database"
+
+![Instrução 01](imgs/instrucao_1.png)
+![Instrução 02](imgs/instrucao_2.png)
+
+---------------------------------------------------------------------------------------------------------------------------------------------------- 
+
+## Ferramentas utilizadas:
+- IDE: Visual Studio
+- Linguagem: C# com ASP.NET
+- Banco de dados: Microsoft SQL Server
+
+---------------------------------------------------------------------------------------------------------------------------------------------------- 
 
 <h2>Funcionalidades das Classes</h2>
 
@@ -52,8 +51,3 @@ Programa relacionado ao teste do Programa Best Minds 2022 - Pessoa Desenvolvedor
 <p align="center">
     <img width="350" src="imgs/read_me/TelaSistema.png">
 </p> 
-
-
-
-
-
