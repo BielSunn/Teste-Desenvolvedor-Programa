@@ -3306,11 +3306,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\z-Projetos\\VisualStudio\\OliveiraTrade\\OliveiraTrade.Web\\OliveiraTrade.Web.csproj",
+      "projectUniqueName": "D:\\z-Projetos\\VisualStudio\\Teste-Desenvolvedor-Programa\\OliveiraTrade\\OliveiraTrade.Web\\OliveiraTrade.Web.csproj",
       "projectName": "OliveiraTrade.Web",
-      "projectPath": "D:\\z-Projetos\\VisualStudio\\OliveiraTrade\\OliveiraTrade.Web\\OliveiraTrade.Web.csproj",
+      "projectPath": "D:\\z-Projetos\\VisualStudio\\Teste-Desenvolvedor-Programa\\OliveiraTrade\\OliveiraTrade.Web\\OliveiraTrade.Web.csproj",
       "packagesPath": "C:\\Users\\Gabriel\\.nuget\\packages\\",
-      "outputPath": "D:\\z-Projetos\\VisualStudio\\OliveiraTrade\\OliveiraTrade.Web\\obj\\",
+      "outputPath": "D:\\z-Projetos\\VisualStudio\\Teste-Desenvolvedor-Programa\\OliveiraTrade\\OliveiraTrade.Web\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\Gabriel\\AppData\\Roaming\\NuGet\\NuGet.Config",

@@ -1,0 +1,23 @@
+﻿@model List<Usuario>
+
+
+<h1>Usuarios</h1>
+
+
+<table class="table table-striped">
+    <tr>
+        <th>Nome</th>
+        <th>Data de Nascimento</th>
+        <th>CPF</th>
+        <th>E-mail</th>
+    </tr>
+    @foreach (var user in Model)
+    {
+        <tr>
+            <td>@user.Nome</td>
+            <td>@user.DataNascimento.ToShortDateString()</td>
+            <td>@user.Cpf</td>
+            <td>@user.Email</td>
+        </tr>
+    }
+</table>

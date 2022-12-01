@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "ZK+x4kFd6Kiqfeu/LzF2xjkZLbzq1J1Ak1ZSq89A7i0/ll4mjrny302ss5E8t2Hb/1RWEErO0Dfgpcu1CBC47g==",
+  "dgSpecHash": "0kPq2cZ91OkMdkyb6KXFIKLCeOoi4L4QUmq8WkrQvE/zQWSjox/a9n2tYFpo4J04BTNhq+wSY0ZcXn9gqKmxGA==",
   "success": true,
-  "projectFilePath": "D:\\z-Projetos\\VisualStudio\\OliveiraTrade\\OliveiraTrade.Web\\OliveiraTrade.Web.csproj",
+  "projectFilePath": "D:\\z-Projetos\\VisualStudio\\Teste-Desenvolvedor-Programa\\OliveiraTrade\\OliveiraTrade.Web\\OliveiraTrade.Web.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Gabriel\\.nuget\\packages\\azure.core\\1.24.0\\azure.core.1.24.0.nupkg.sha512",
     "C:\\Users\\Gabriel\\.nuget\\packages\\azure.identity\\1.6.0\\azure.identity.1.6.0.nupkg.sha512",
