@@ -1,6 +1,7 @@
 ﻿@model Usuario
 
 @{
+    Layout = "_LayoutDeslogado";
     ViewData["Title"] = "Cadastro";
 }
 
@@ -21,7 +22,7 @@
 
 <h1>Cadastro Usuario</h1>
 
-<form asp-action="cadastrar" asp-controller="Login">
+<form asp-action="cadastrar" asp-controller="Usuario">
 
     <div class="mb-3">
         <label asp-for="Nome"></label>
@@ -54,6 +55,6 @@
     </div>
 
     <button type="submit" class="btn btn-outline-primary">Cadastrar</button>
-    <a asp-action="index" class="btn btn-outline-dark">Voltar</a>
+    <a asp-action="index" asp-controller="Login" class="btn btn-outline-dark">Voltar</a>
 
 </form>
