@@ -23,6 +23,8 @@ namespace OliveiraTrade.Web.Controllers
                     _context.Usuarios.Add(usuario);
                     _context.SaveChanges();
                     TempData["msg"] = "Usuário Cadastrado";
+
+                    return RedirectToAction("Cadastrar");
                 }
             }
             catch (Exception erro)
@@ -30,7 +32,6 @@ namespace OliveiraTrade.Web.Controllers
                 TempData["MensagemErro"] = $"Ops, não conseguimos realizar seu cadastro, tente novamente, detalhe do erro: {erro.Message}";
                 return View();
             }
-
             return View();
         }
 
